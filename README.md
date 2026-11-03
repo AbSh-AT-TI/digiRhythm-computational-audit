@@ -1,37 +1,52 @@
-# digiRhythm-computational-audit
-R scripts accompanying a computational audit of the digiRhythm R package, focusing on rolling-window calculations, spectral frequency selection, and rhythmicity indices.
-
 # Computational Audit of the digiRhythm R Package
-## Overview
 
-This repository contains the R scripts accompanying the study: Computational audit of the digiRhythm R package for analysing animal behavioural rhythms.
-The scripts document the computational tests conducted to examine the implementation of the `dfc()` and `lomb_scargle_periodogram()` functions.
+This repository contains R scripts accompanying a computational audit of the
+`digiRhythm` package, focusing on `dfc()` and `lomb_scargle_periodogram()`.
 
 ## Contents
-The repository includes scripts examining:
-1. Rolling-window calculations and input-order dependence.
-2. Spectral frequency selection and harmonic retention.
-3. Frequency reporting across different rolling-window lengths.
-4. Input handling and chronological ordering.
-5. DFC and HP calculations, including edge cases involving zero denominators.
+
+| Script | Purpose |
+|---|---|
+| `R/01_rolling_window_audit.R` | Tests the seven-day boundary case and compares expected and implemented rolling-window counts. |
+| `R/02_spectral_truncation_frequency_audit.R` | Examines harmonic retention and frequency reporting for seven- and 14-day windows. |
+| `R/03_plot_lsp_argument_audit.R` | Tests whether `plot_lsp` controls individual periodogram plots generated within `dfc()`. |
+| `R/04_DFC_HP_zero_denominator_example.R` | Illustrates the arithmetic behaviour of DFC and HP when denominators are zero. |
+| `R/05_ratio_plot_label_audit.R` | Generates the package plot for inspection of proportion/percentage labelling. |
 
 ## Requirements
-- R
+
+The scripts use R and the following packages:
+
 - `digiRhythm`
 - `dplyr`
 - `lubridate`
 
-Install the required packages using:
+Install the packages with:
+
 ```r
 install.packages(c("digiRhythm", "dplyr", "lubridate"))
 ```
 
-## Reproducibility
-The scripts use package datasets and simulated activity time series to reproduce the computational tests described in the accompanying study.
-The R version and package versions used for the analyses should be recorded using `sessionInfo()`.
+Run each script from a fresh R session. Some scripts generate plots or intentionally
+exercise edge cases. The first script catches and reports an error from `dfc()` so
+that the remaining checks in that script can still be completed.
+
+## Reproducibility notes
+
+- The spectral audit uses simulated activity data with `set.seed(123)`.
+- The rolling-window script uses the package dataset `df516b_2`.
+- The DFC/HP zero-denominator script is an independent arithmetic illustration;
+  it does not independently validate the package's significance-testing algorithm.
+- The plotting scripts require visual inspection of the generated output.
+- Package behaviour may change across `digiRhythm` versions. The scripts print
+  `packageVersion("digiRhythm")` and `sessionInfo()` to record the environment.
 
 ## Citation
-If you use these scripts, please cite the associated study and the archived software version where available.
 
-## Contact
-For questions about the scripts, please contact the corresponding author of the associated study.
+Please cite the associated manuscript when using or discussing these audit scripts.
+A versioned archive and DOI can be added here after the repository is archived
+through Zenodo.
+
+## Licence
+
+Add a licence only after confirming that you have the right to license the scripts.
