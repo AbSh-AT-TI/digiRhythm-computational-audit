@@ -43,10 +43,11 @@ that the remaining checks in that script can still be completed.
 
 ## Citation
 
-Please cite the associated manuscript when using or discussing these audit scripts.
-A versioned archive and DOI can be added here after the repository is archived
-through Zenodo.
+If you use or refer to these scripts, please cite the associated manuscript:
+A Computational Audit of DFC and Lomb–Scargle Spectral Analysis in the digiRhythm R Package.
+
+A full bibliographic reference and permanent DOI will be added once the manuscript is published and the code is archived.
 
 ## Licence
 
-Add a licence only after confirming that you have the right to license the scripts.
+No licence has been assigned to this repository at present. Please contact the repository author for permission before reusing or redistributing the scripts.
